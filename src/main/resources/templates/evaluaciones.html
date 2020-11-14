@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"> 
+	
+    <title>Evaluaciones Principal</title>
+    <style type="text/css">
+		
+		.thead2 {
+		background-color:#F25430;
+		color:#ffffff;
+		}
+		.button1 {
+		background-color:#5743D9;
+		color:#ffffff;
+		}
+		.button2 {
+		background-color:#2BBBFF;
+		color:#ffffff;
+		}
+		h1{
+		font-family: 'Kaushan Script', cursive;
+		}	
+		.table-striped>tbody>tr:nth-child(odd)>td, 
+		.table-striped>tbody>tr:nth-child(odd)>th  {
+		   background-color: #F29A2E; 
+		 }
+		/* NAV */
+		.nav-wrapper { 
+		display:flex; 
+		justify-content: flex-end;
+		padding: 28px; 
+		}
+		.right-side{ 
+		 display:flex; 
+		 }
+		
+		.nav-wrapper > .right-side > div{ 
+		  margin-left: 60px; 
+		  font-size: 1em;
+		  text-transform: uppercase;
+		 }
+		
+		.nav-link-wrapper{
+		
+		 height: 30px; 
+		 border-bottom: 1px solid transparent; 
+		 transition: border-bottom 0.5s; 
+		 }
+		
+		.nav-link-wrapper a {
+		 color: #8a8a8a;
+		 text-decoration: none; 
+		 transition: color 0.5s;
+		 }
+		
+		.nav-link-wrapper:hover {
+		 border-bottom: 1px solid black; 	
+		 }
+		
+		.nav-link-wrapper a:hover {
+		 color: black;	
+		 }
+		
+		.active-nav-link{ 
+		 border-bottom: 1px solid black;
+		}
+		
+		.active-nav-link a{ 
+		 color: black !important; 
+		}
+		</style>
+		
+  </head>
+  <body>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+    
+	
+
+
+	<div class="container">   
+		<br>
+		<div class="row">
+			<div class="col-md-6 col-xs-12"><h1 class="pull-left">Evaluaciones</h1></div>
+		</div> 
+			<div class="nav-wrapper">
+	
+				<div class="right-side">
+					<div class="nav-link-wrapper active-nav-link">
+						<a href="Index1.html"><i class="fas fa-home"></i>Home</a>
+					</div>
+				</div>
+	        </div>
+		<br>
+	    <form>
+	  		<div class="form-row">
+	    		<div class="form-group col-lg-4">
+					<div class="clearfix">
+					<br>
+					<br>
+					<br>
+			 			<div class="form-group">
+							<a href="/evaluaciones/crear" th:href="@{'/evaluaciones/crear'}" class="btn btn-info">
+							<i class="fas fa-plus"></i> Agregar</a>
+						</div>
+						
+						<div class="form-group">				
+							<a href="/evaluaciones/actualizar" th:href="@{'/evaluaciones/actualizar'}" class="btn btn-secondary">
+							<i class="fas fa-pencil-alt"></i> Actualizar</a> 
+						</div>
+										
+					</div>
+				</div>	
+				<br><br>
+						
+				<div class="form-group col-lg-8">
+				<div class="text-center">
+												
+													<table class="table table-striped table-hover w-auto">
+														<thead class="thead2">
+															<tr>
+																<th>Id</th>
+																<th>Nombres</th>
+																<th>Apellidos</th>
+																<th>Materia</th>
+																<th>Nota</th>
+																<th>Aprobado</th>
+																<th>Estado</th>
+																<th></th>
+															</tr>
+														</thead>
+														<tbody th:each="evaluaciones:${evaluaciones}">
+															<tr  class="table-warning">									
+																<td th:text="${evaluaciones.id}"></td>
+																<td th:text="${evaluaciones.nombres}"></td>
+																<td th:text="${evaluaciones.apellidos}"></td>
+																<td th:text="${evaluaciones.materia}"></td>
+																<td th:text="${evaluaciones.nota}"></td>
+																<td th:text="${evaluaciones.aprobado}"></td>
+																<td th:text="${evaluaciones.estado}"></td>
+																<td>
+																<form method="post" action="/evaluaciones/delete/${evaluaciones.id}" th:action="@{'/evaluaciones/delete/' + ${evaluaciones.id}}">
+																<input type="hidden" name="userId" th:value="${evaluaciones.id}"/>
+																<input type="hidden" name="_method" th:value="borrar"/>
+																<button type="submit" name="deleteEvaluaciones" class="btn btn-info thead2"><i class="fas fa-trash-alt"></i>Borrar</button>
+																</form>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+																		
+							</div>
+												
+						</div>
+					</div>
+				</form>
+		</div>	
+  </body>
+  <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                ordering: false,
+                responsive: {
+                    breakpoints: [
+                        { name: 'bigdesktop', width: Infinity },
+                        { name: 'meddesktop', width: 1480 },
+                        { name: 'smalldesktop', width: 1280 },
+                        { name: 'medium', width: 1188 },
+                        { name: 'tabletl', width: 1024 },
+                        { name: 'btwtabllandp', width: 848 },
+                        { name: 'tabletp', width: 768 },
+                        { name: 'mobilel', width: 480 },
+                        { name: 'mobilep', width: 320 }
+                    ]
+                },
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sProcessing": "Procesando...",
+                }
+
+            });
+        });
+    </script>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"> 
+	
+    <title>Actualizar Evaluacion</title>
+    <style type="text/css">
+		
+		body {
+		background-color:#DCC3E0;
+		}
+		header {
+		background-color:#A868B1;
+		vertical-align:middle; 
+		margin:0; 
+		height: 70px;
+		text-align:center;
+		color:#ffff;
+		}
+		h1{
+		font-family: 'Kaushan Script', cursive;
+		}
+		/* NAV */
+		.nav-wrapper { 
+		display:flex; 
+		justify-content: flex-end;
+		padding: 28px; 
+		}
+		.right-side{ 
+		 display:flex; 
+		 }
+		
+		.nav-wrapper > .right-side > div{ 
+		  margin-left: 20px; 
+		  font-size: 1em;
+		  text-transform: uppercase;
+		 }
+		
+		.nav-link-wrapper{
+		
+		 height: 30px; 
+		 border-bottom: 1px solid transparent; 
+		 transition: border-bottom 0.5s; 
+		 }
+		
+		.nav-link-wrapper a {
+		 color: #8a8a8a;
+		 text-decoration: none; 
+		 transition: color 0.5s;
+		 }
+		
+		.nav-link-wrapper:hover {
+		 border-bottom: 1px solid black; 	
+		 }
+		
+		.nav-link-wrapper a:hover {
+		 color: black;	
+		 }
+		
+		.active-nav-link{ 
+		 border-bottom: 1px solid black;
+		}
+		
+		.active-nav-link a{ 
+		 color: black !important; 
+		}
+		</style>
+		
+  </head>
+  <body>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+     <header>
+	    <div class="row">
+				<div class="col-md-6 col-xs-12"><h1 class="pull-center">Actualizar Evaluaciones</h1></div>
+		</div>
+	 </header> 
+		
+    <div class="container">
+		    <div class="nav-wrapper">
+			
+						<div class="right-side">
+							<div class="nav-link-wrapper active-nav-link">
+								<a href="Index1.html"><i class="fas fa-home"></i>Home</a>
+							</div>
+							
+							<div class="nav-link-wrapper">
+								<a href="/evaluaciones" th:href="@{'/evaluaciones'}"><i class="fas fa-arrow-left"></i>Regresar</a>
+							</div>
+						</div>
+	        </div>
+    <br>	
+	<br>
+	 		<form method="post" th:action="@{/evaluaciones}" th:object="${actEvaluaciones}">
+	 			<div class="form-row">
+	 				<div class="form-group col-md-1">
+	 					<label for="id">ID</label>
+	 					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="ingresar Id" th:field="*{id}"/>
+		 			</div>
+		 			<div class="form-group col-md-6">
+		 				<label for="nombres">Nombres</label>
+	 					<input type="text" class="form-control" id="nombres" aria-describedby="emailHelp" placeholder="ingresar nombre" th:field="*{nombres}"/>
+		 			</div>
+		 			<div class="form-group col-md-5">
+		 				<label for="apellidos">Apellidos</label>
+		 				<input type="text" class="form-control" id="apellidos" aria-describedby="emailHelp" placeholder="Ingresar apellidos" th:field="*{apellidos}"/>
+		 			</div>
+		 		</div>
+		 		<div class="form-row">
+		 			<div class="form-group col-md-7">
+		 				<label for="materia">Materia</label>
+		 				<input type="text" class="form-control" id="materia" aria-describedby="emailHelp" placeholder="Ingresar Materia" th:field="*{materia}"/>
+		 			</div>
+		 			<div class="form-group col-md-3">
+		 				<label for="nota">Nota</label>
+		 				<input type="text" class="form-control" id="nota" aria-describedby="emailHelp" placeholder="Ingresar Nota" th:field="*{nota}"/>
+		 			</div>
+	 			</div>
+	 			<div class="form-row">
+		 			<div class="form-group col-md-4">
+		 				<label for="aprobado">Aprobado</label>
+		 				<input type="text" class="form-control" id="aprobado" aria-describedby="emailHelp" placeholder="Ingresar 'A' o 'R'" th:field="*{aprobado}"/>
+		 			</div>
+		 			<div class="form-group col-md-4">
+		 				<label for="estado">Estado</label>
+		 				<input type="text" class="form-control" id="estado" aria-describedby="emailHelp" placeholder="Ingresar 1 o 0" th:field="*{estado}"/>
+		 			</div>
+	 			</div>
+	 			
+	 			<button type="submit" class="btn btn-primary">Actualizar</button>	
+	 			
+	 		</form>
+	 	</div>
+  </body>
+</html>
