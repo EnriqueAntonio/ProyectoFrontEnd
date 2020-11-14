@@ -40,7 +40,10 @@ public class EvaluacionesServicio {
 		Map<String, Object>model= new HashMap<>();
 		
 		try {
+			evaluaciones.setAprobado("A");
+			evaluaciones.setEstado("1");
 			ResponseDTO res=clientebd.crear(evaluaciones);
+			
 		} catch (HttpStatusCodeException  e) {
 			
 			model.put("msg", ResponseDTO.MSG_FATAL_ERROR);
@@ -56,6 +59,7 @@ public class EvaluacionesServicio {
 		
 		try {
 			ResponseDTO res=clientebd.actualizar(evaluaciones);
+			
 		} catch (HttpStatusCodeException e) {
 			
 			model.put("msg", ResponseDTO.MSG_FATAL_ERROR);

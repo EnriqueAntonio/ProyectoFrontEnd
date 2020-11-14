@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import client.dominio.EvaluacionesDTO;
 import client.servicio.EvaluacionesServicio;
-
 
 
 @Controller
@@ -35,20 +33,28 @@ public class EvaluacionesControlador {
 	
 	@GetMapping("/crear")
 	public String redirectcrear(Model model) {
-		model.addAttribute("crearEvaluaciones", new EvaluacionesDTO());
-		return "CrearEvaluaciones";
+		model.addAttribute("crearEvaluacion", new EvaluacionesDTO());
+		return "CrearEvaluacion";
 	}
 	
 	@PostMapping
-	public String crear(@ModelAttribute("crearEvaluaciones")EvaluacionesDTO evaluaciones)
+	public String crear(@ModelAttribute("crearEvaluacion")EvaluacionesDTO evaluaciones)
 	{
 		servicio.crear(evaluaciones);
 		return "redirect:/evaluaciones";
 	}
 	
+	
 	@GetMapping("/actualizar")
-	public String actualizar(@ModelAttribute("actEvaluaciones")EvaluacionesDTO evaluaciones)
-	{
+	public String redirectact(Model model) {
+		model.addAttribute("actEvaluaciones", new EvaluacionesDTO());
+		return "ActEvaluaciones";		
+	}
+	
+	
+	@PostMapping("/update")
+	public String actualizar(@ModelAttribute ("actEvaluaciones")EvaluacionesDTO evaluaciones) {
+		
 		servicio.actualizar(evaluaciones);
 		return "redirect:/evaluaciones";
 	}
@@ -60,4 +66,5 @@ public class EvaluacionesControlador {
 		return "redirect:/evaluaciones";
 		
 	}
+
 }
