@@ -34,7 +34,7 @@ public class PatologiaControlador {
 	@GetMapping("/crear")
 	public String redirectcrear(Model model) {
 		model.addAttribute("crearPatologia", new PatologiaDTO());
-		return "CrearPatologia";
+		return "CreatePatology";
 	}
 	
 	@PostMapping
@@ -45,12 +45,15 @@ public class PatologiaControlador {
 	}
 	
 	@GetMapping("/actualizar")
-	public String actualizar(@ModelAttribute("actPatologia")PatologiaDTO patologia)
-	{
-		servicio.actualizar(patologia);
-		return "redirect:/Patologia";
+	public String redirectact(Model model) {
+		model.addAttribute ("actPatologia", new PatologiaDTO());
+		return "UpdatePato";
 	}
-	
+	@PostMapping("/update")
+	public String actualizar(@ModelAttribute ("actPatologia")PatologiaDTO patologia) {
+		servicio.actualizar(patologia);
+		return "redirect:/patologia";
+	}
 	@PostMapping("/delete/{id}")
 	public String borrar(@PathVariable("id") Long id)
 	{

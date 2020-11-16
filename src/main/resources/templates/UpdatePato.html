@@ -1,0 +1,146 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	   <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <!-- Pag Actualizar -->
+        <title> Patology Actualizar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+	 <style type="text/css">
+
+		body{
+		background-color: #8EC5FC;
+		background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 50%, #ffffff 100%);
+		}
+		header {
+		background-color:#F29A2E;
+		vertical-align:middle; 
+		margin:0;
+		height: 70px;
+		text-align:center;
+		}
+		h1{
+		font-family: 'Kaushan Script', cursive;
+		}
+		/* NAV */
+		.nav-wrapper { 
+		display:flex; 
+		justify-content: flex-end;
+		padding: 28px; 
+		}
+		.right-side{ 
+		 display:flex; 
+		 }
+
+		.nav-wrapper > .right-side > div{ 
+		  margin-left: 20px; 
+		  font-size: 1em;
+		  text-transform: uppercase;
+		 }
+
+		.nav-link-wrapper{
+
+		 height: 30px; 
+		 border-bottom: 1px solid transparent; 
+		 transition: border-bottom 0.5s; 
+		 }
+
+		.nav-link-wrapper a {
+		 color: #8a8a8a;
+		 text-decoration: none; 
+		 transition: color 0.5s;
+		 }
+
+		.nav-link-wrapper:hover {
+		 border-bottom: 1px solid black; 	
+		 }
+
+		.nav-link-wrapper a:hover {
+		 color: black;	
+		 }
+
+		.active-nav-link{ 
+		 border-bottom: 1px solid black;
+		}
+
+		.active-nav-link a{ 
+		 color: black !important; 
+		}
+		</style> 
+    </head>
+ <body>
+		     <header>
+			    <div class="row">
+						<div class="col-md-6 col-xs-12"><h1 class="pull-center">Crear Patologias</h1></div>
+				</div> 
+			</header>
+			<!-- Nav Home & Atras -->
+	<div class="container">
+		    <div class="nav-wrapper">
+		    <!-- Home/Inicio -->
+					<div class="right-side">
+					<div class="nav-link-wrapper active-nav-link">
+						<a href="/Inicio"><i class="fas fa-home"></i>Home</a>
+					</div>
+					<!-- nav Atrás -->
+					<div class="nav-link-wrapper">
+						<a href="/patologia" th:href="@{'/patologia'}" ><i class="fas fa-arrow-left"></i>Regresar</a>
+					</div>
+				</div>
+	        </div>
+    <br>	
+	<br>
+			<!-- Tabla vistas -->
+    	<div class="container-fluid">
+		 			<form method="post" th:action="@{/patologia}" th:object="${actPatologia}">
+		 			<div class="form-row">
+	 				<div class="form-group col-md-2">
+	 					<label for="id_pat">ID</label>
+	 					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Ingresar Id" th:field="*{id_pat}"/>
+		 		<div class="form-row">
+			 			<div class="form-group col-md-6">
+				 				<label for="tipo_de_patologia">Tipo de patologia</label>
+				 				<input type="text" class="form-control" id="tipo" aria-describedby="emailHelp" placeholder="ingresar el tipo de patologia" th:field="*{tipo_de_patologia}"/>
+			 				</div>
+			 			</div>
+		
+			 			<div class="form-row">
+				 			<div class="form-group col-md-5">
+				 				<label for="categoria">Categoria</label>
+				 				<input type="text" class="form-control" id="categoria" aria-describedby="emailHelp" placeholder="ingresar la categoria" th:field="*{categoria}"/>
+				 			</div>
+		 			</div>
+			 			<div class="form-row">
+				 			<div class="form-group col-md-7">
+				 				<label for="patogeno">Patogeno</label>
+				 				<input type="text" class="form-control" id="patogeno" aria-describedby="emailHelp" placeholder="ingresar el patogeno" th:field="*{patogeno}"/>
+				 			</div>
+		 			</div>
+			 			<div class="form-row">
+				 			<div class="form-group col-md-7">
+				 				<label for="descripcion">Descripción</label>
+				 				<input type="text" class="form-control" id="descripcion" aria-describedby="emailHelp" placeholder="ingresar la descripción de la patologia" th:field="*{descripcion}"/>
+				 			</div>
+		 			</div>
+			 			<div class="form-row">
+				 			<div class="form-group col-md-7">
+				 				<label for="sintomas">Sintomas</label>
+				 				<input type="text" class="form-control" id="sintomas" aria-describedby="emailHelp" placeholder="ingresar los sintomas" th:field="*{sintomas}"/>
+				 			</div>
+		 			</div>
+			 			<div class="form-row">
+				 			<div class="form-group col-md-7">
+				 				<label for="tratamiento">Tratamiento</label>
+				 				<input type="text" class="form-control" id="tratamiento" aria-describedby="emailHelp" placeholder="ingresar el tratamiento" th:field="*{tratamiento}"/>
+			 				</div>
+		 			</div>
+		 				<button type="submit" class="btn btn-info"> Actualizar </button>		
+					</form>
+		</div>
+	</div>
+</html>

@@ -1,0 +1,151 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Inicio </title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css"> <!-- bootstrap -->
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"> <!-- Fontawesome iconos -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
+        
+		<style type="text/css">
+		
+		body{
+		background-color: #0093E9;
+		background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 50%, #ffffff 100%);
+
+		
+		padding-left:50px;
+		padding-top:10px;
+		padding-right:50px;
+		}
+		
+		i {
+		padding-right:5px;
+		}
+		#label{
+		font-family: 'Kaushan Script', cursive;
+		}
+		
+		.card {
+		  padding-left:auto;
+		  padding-right:auto;
+		  min-height:500px;
+		  margin-top:15px;
+		 box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+		 -webkit-transition: .25s box-shadow;
+		 transition: .25s box-shadow;
+		}
+		.card:focus, .card:hover {
+		 box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+		}
+		.card-inverse .card-img-overlay {
+		 background-color: rgba(51, 51, 51, 0.85);
+		 border-color: rgba(51, 51, 51, 0.85);
+		}
+		.card-img-top{
+		  margin-top:10px;
+		}
+		.col-xs-12{
+		  text-align:center;
+		  margin-left:auto;
+		  margin-right:auto;
+		}
+		.row{
+		  margin-left:auto;
+		  margin-right:auto;
+		}
+		.texto{
+		font-family: 'Comfortaa', cursive;
+		}
+		
+		</style> 
+    </head>
+    	<body>
+    	<div class="container">
+    		<center><h1 class="texto"> Inicio </h1></center>
+			<div class="col-lg-12" id="content-wrapper">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+				<ul class="nav justify-content-end">
+				<!-- Nav bar -->
+					<li class="nav-item">
+						<a class="nav-link"  id= "home"href="/Inicio" ><i class="fas fa-home"></i>Inicio</a>
+					 </li>
+					 
+					 <!-- Patologias item -->
+					    <li class="nav-item dropdown">
+						    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/patologia" th:href="@{'/patologia'}" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-capsules"></i>Patologia</a>
+						    <div class="dropdown-menu">
+						      <a class="dropdown-item" href="/patologia" th:href="@{'/patologia'}"> Listar Patologia </a> 
+						     <div class="dropdown-divider"></div> 
+						     <a class="dropdown-item" href="/patologia/crear" th:href="@{'/patologia/crear'}"> Crear </a>
+						     <a class="dropdown-item" href="/patologia/actualizar" th:href="@{'/patologia/actualizar'}"> Actualizar </a>
+						    </div>
+						    <!-- Evalucciones item -->
+					    	<li class="nav-item dropdown">
+							    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-chalkboard-teacher"></i>Evaluaciones</a>
+							    <div class="dropdown-menu">
+							      <a class="dropdown-item"href="/evaluaciones" th:href="@{'/evaluaciones'}"> Listar Evaluaciones </a> 
+							     <div class="dropdown-divider"></div> 
+							     <a class="dropdown-item" href="/evaluaciones/crear" th:href="@{'/evaluaciones/crear'}"> Crear </a>
+							     <a class="dropdown-item" href="/evaluaciones/actualizar" th:href="@{'/evaluaciones/actualizar'}"> Actualizar </a>
+						    </div>
+					 	 </li>
+					 	  <!-- Sucursal item -->
+					    	<li class="nav-item dropdown bg-white">
+							    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i>Sucursal</a>
+							    <div class="dropdown-menu">
+							      <a class="dropdown-item"href="/sucursal" th:href="@{'/sucursal'}"> Listar Sucursal </a> 
+							     <div class="dropdown-divider"></div> 
+							     <a class="dropdown-item" href="/sucursal/crear" th:href="@{'/sucursal/crear'}"> Crear </a>
+							     <a class="dropdown-item" href="/sucursal/actualizar" th:href="@{'/suursal/actualizar'}"> Actualizar </a>
+						    </div>
+					 	 </li>
+					</ul>
+				</nav>
+			<!-- Inicio Cards + Iconos -->
+ 				 <div class="row">
+ 				 <!-- Pato card -->
+    				<div class="col-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80" alt="Card image cap">
+						  	<div class="card-body">
+						    <h2 class="texto"class="card-title">Patologias</h2>
+						    <h4 class="texto"class="card-text">Parte de la medicina que estudia los trastornos anatómicos y fisiológicos de los tejidos y los órganos enfermos, así como los síntomas y signos a través de los cuales se manifiestan las enfermedades y las causas que las producen</h4>
+						   <a href="/patologia" th:href="@{'/patologia'}" class="btn btn-primary"> Ir a Patologia </a>
+						  </div>
+						</div>
+					</div>
+					<!-- Eva Card -->
+						<div class="col-md-4 ">
+							<div class="card">
+							  <img class="card-img-top" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1418&q=80" alt="Card image cap">
+							  	<div class="card-body">
+							    <h2 class="texto" class="card-title">Evaluaciones</h2>
+							    <h4 class="texto" class="card-text">Valoración de conocimientos, actitud y rendimiento de una persona.</h4>
+							   <a href="/evaluaciones" th:href="@{'/evaluaciones'}" class="btn btn-primary"> Ir a Evaluciones </a> 
+							  </div>
+							</div>
+						</div>
+						<!-- Surcursal Card -->
+						<div class="col-md-4">
+							<div class="card">
+							  <img class="card-img-top" src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="Card image cap">
+							  	<div class="card-body">
+							    <h2 class="texto" class="card-title">Sucursal</h2>
+							    <h4 class="texto" class="card-text"> Que depende de otro principal y desempeña las mismas funciones que este en otro lugar.</h4>
+							    <a href="/sucursal" th:href="@{'/sucursal'}" class="btn btn-primary">   Ir a Sucursal </a> 	
+							  </div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+    </body>
+ </html>
