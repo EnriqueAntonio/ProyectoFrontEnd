@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import client.dominio.PatologiaDTO;
 import client.dominio.SucursalDTO;
 import client.servicio.SucursalServicio;
 
@@ -45,7 +45,13 @@ public class SucursalControlador {
 		return "redirect:/sucursal";
 	}
 	
-	@GetMapping("/actualizar")
+	@GetMapping("/actualizar/{id}")
+	public String redirectact(Model model,@PathVariable("id") Long id) {
+		model.addAttribute ("ActSucursal", new SucursalDTO());
+		return "ActSucursal";
+	}
+	
+	@PostMapping("/update")
 	public String actualizar(@ModelAttribute("actSucursal")SucursalDTO sucursal)
 	{
 		servicio.actualizar(sucursal);

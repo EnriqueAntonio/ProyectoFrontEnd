@@ -5,7 +5,9 @@
         <!-- Pag Actualizar -->
         <title> Patology Actualizar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <!-- Bootstrap CSS -->
@@ -71,6 +73,10 @@
 		.active-nav-link a{ 
 		 color: black !important; 
 		}
+		
+		.row{
+		padding-bottom:15px;
+		}
 		</style> 
     </head>
  <body>
@@ -97,50 +103,79 @@
 	<br>
 			<!-- Tabla vistas -->
     	<div class="container-fluid">
-		 			<form method="post" th:action="@{/patologia}" th:object="${actPatologia}">
-		 			<div class="form-row">
-	 				<div class="form-group col-md-2">
-	 					<label for="id_pat">ID</label>
-	 					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Ingresar Id" th:field="*{id_pat}"/>
-		 		<div class="form-row">
-			 			<div class="form-group col-md-6">
-				 				<label for="tipo_de_patologia">Tipo de patologia</label>
-				 				<input type="text" class="form-control" id="tipo" aria-describedby="emailHelp" placeholder="ingresar el tipo de patologia" th:field="*{tipo_de_patologia}"/>
-			 				</div>
-			 			</div>
-		
-			 			<div class="form-row">
-				 			<div class="form-group col-md-5">
-				 				<label for="categoria">Categoria</label>
-				 				<input type="text" class="form-control" id="categoria" aria-describedby="emailHelp" placeholder="ingresar la categoria" th:field="*{categoria}"/>
-				 			</div>
+		 			<form action="#" th:action="@{/patologia}" th:object="${actPatologia}" method="post">
+		 			
+		 			<div class="row">
+		 			<div class="col-xs-12 col-md-4 col-xl-4">
+		 			<label for="id_pat">ID</label>
+	 					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Ingresar Id" th:field="*{id_pat}" readonly/>
 		 			</div>
-			 			<div class="form-row">
-				 			<div class="form-group col-md-7">
-				 				<label for="patogeno">Patogeno</label>
+		 			<div class="col-xs-12 col-md-4 col-xl-4">
+		 				<label for="tipo_de_patologia">Tipo de patologia</label>
+				 		<input type="text" class="form-control" id="tipo" aria-describedby="emailHelp" placeholder="ingresar el tipo de patologia" th:field="*{tipo_de_patologia}"/>
+		 			</div>
+		 			<div class="col-xs-12 col-md-4 col-xl-4">
+		 				<label for="categoria">Categoria</label>
+				 		<input type="text" class="form-control" id="categoria" aria-describedby="emailHelp" placeholder="ingresar la categoria" th:field="*{categoria}"/>
+		 			</div><br>
+		 			
+		 			</div>
+		 			<div class="row">
+		 			<div class="col-xs-12 col-md-4 col-xl-4">
+		 						<label for="patogeno">Patogeno</label>
 				 				<input type="text" class="form-control" id="patogeno" aria-describedby="emailHelp" placeholder="ingresar el patogeno" th:field="*{patogeno}"/>
-				 			</div>
 		 			</div>
-			 			<div class="form-row">
-				 			<div class="form-group col-md-7">
-				 				<label for="descripcion">Descripción</label>
+		 			<div class="col-xs-12 col-md-4 col-xl-4">
+		 						<label for="descripcion">Descripción</label>
 				 				<input type="text" class="form-control" id="descripcion" aria-describedby="emailHelp" placeholder="ingresar la descripción de la patologia" th:field="*{descripcion}"/>
-				 			</div>
 		 			</div>
-			 			<div class="form-row">
-				 			<div class="form-group col-md-7">
-				 				<label for="sintomas">Sintomas</label>
+		 			<div class="col-xs-12 col-md-4 col-xl-4">
+		 						<label for="sintomas">Sintomas</label>
 				 				<input type="text" class="form-control" id="sintomas" aria-describedby="emailHelp" placeholder="ingresar los sintomas" th:field="*{sintomas}"/>
-				 			</div>
+		 			</div><br>
+		 			
 		 			</div>
-			 			<div class="form-row">
-				 			<div class="form-group col-md-7">
-				 				<label for="tratamiento">Tratamiento</label>
+		 			<div class="row">
+		 			<div class="col-xs-12 col-md-4 col-xl-4">
+		 			<label for="tratamiento">Tratamiento</label>
 				 				<input type="text" class="form-control" id="tratamiento" aria-describedby="emailHelp" placeholder="ingresar el tratamiento" th:field="*{tratamiento}"/>
-			 				</div>
 		 			</div>
+		 			
+		 			</div>
+		 			
+		 			
+		 		
 		 				<button type="submit" class="btn btn-info"> Actualizar </button>		
 					</form>
 		</div>
 	</div>
+	
+	<script>
+	
+	const url = window.location.href;
+
+	var id = url.substring(url.lastIndexOf('/') + 1);
+	document.getElementById("id").value = id;
+	
+	  $.ajax({
+	        url: 'http://localhost:8090/patologia/'+id,
+	        method: 'get',
+	        dataType: 'json',
+	        data: {
+
+	        },
+	        success: function (result) {
+
+	            $(result).each(function (i, citas) {
+	            	document.getElementById("categoria").value = citas.respuesta.categoria;
+	            	document.getElementById("tipo").value = citas.respuesta.tipo_de_patologia;
+	            	document.getElementById("patogeno").value = citas.respuesta.patogeno;
+	            	document.getElementById("descripcion").value = citas.respuesta.descripcion;
+	            	document.getElementById("sintomas").value = citas.respuesta.sintomas;
+	            	document.getElementById("tratamiento").value = citas.respuesta.tratamiento;
+	            });
+	        }
+	    });
+	</script>
+	</body>
 </html>

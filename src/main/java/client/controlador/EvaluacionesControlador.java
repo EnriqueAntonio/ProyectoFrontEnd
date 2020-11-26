@@ -1,6 +1,7 @@
 package client.controlador;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import client.dominio.EvaluacionesDTO;
+import client.dominio.PatologiaDTO;
 import client.servicio.EvaluacionesServicio;
 
 
@@ -44,12 +46,12 @@ public class EvaluacionesControlador {
 		return "redirect:/evaluaciones";
 	}
 	
-	
-	@GetMapping("/actualizar")
-	public String redirectact(Model model) {
-		model.addAttribute("actEvaluaciones", new EvaluacionesDTO());
-		return "ActEvaluaciones";		
+	@GetMapping("/actualizar/{id}")
+	public String redirectact(Model model,@PathVariable("id") Long id) {
+		model.addAttribute ("actEvaluaciones", new EvaluacionesDTO());
+		return "ActEvaluaciones";
 	}
+	
 	
 	
 	@PostMapping("/update")
@@ -66,5 +68,6 @@ public class EvaluacionesControlador {
 		return "redirect:/evaluaciones";
 		
 	}
+	
 
 }

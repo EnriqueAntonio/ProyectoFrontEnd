@@ -40,8 +40,16 @@ public class EvaluacionesServicio {
 		Map<String, Object>model= new HashMap<>();
 		
 		try {
+			if(evaluaciones.getNota()>=6)
+			{
 			evaluaciones.setAprobado("A");
-			evaluaciones.setEstado("1");
+			}
+			else 
+			{
+			evaluaciones.setAprobado("R");
+
+			}
+			
 			ResponseDTO res=clientebd.crear(evaluaciones);
 			
 		} catch (HttpStatusCodeException  e) {
@@ -58,6 +66,14 @@ public class EvaluacionesServicio {
 		Map<String, Object>model= new HashMap<>();
 		
 		try {
+			if(evaluaciones.getNota()>=6)
+			{
+			evaluaciones.setAprobado("A");
+			}
+			else 
+			{
+			evaluaciones.setAprobado("R");
+			}
 			ResponseDTO res=clientebd.actualizar(evaluaciones);
 			
 		} catch (HttpStatusCodeException e) {

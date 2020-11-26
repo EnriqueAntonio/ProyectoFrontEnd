@@ -95,7 +95,7 @@
 			
 						<div class="right-side">
 							<div class="nav-link-wrapper active-nav-link">
-								<a href="Index1.html"><i class="fas fa-home"></i>Home</a>
+								<a href="/Inicio"><i class="fas fa-home"></i>Home</a>
 							</div>
 							
 							<div class="nav-link-wrapper">
@@ -109,7 +109,7 @@
 	 			<div class="form-row">
 	 				<div class="form-group col-md-1">
 	 					<label for="id">ID</label>
-	 					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="ingresar Id" th:field="*{id}"/>
+	 					<input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="ingresar Id" th:field="*{id}" readonly/>
 		 			</div>
 		 			<div class="form-group col-md-6">
 		 				<label for="nombres">Nombres</label>
@@ -133,7 +133,7 @@
 	 			<div class="form-row">
 		 			<div class="form-group col-md-4">
 		 				<label for="aprobado">Aprobado</label>
-		 				<input type="text" class="form-control" id="aprobado" aria-describedby="emailHelp" placeholder="Ingresar 'A' o 'R'" th:field="*{aprobado}"/>
+		 				<input type="text" class="form-control" id="aprobado" aria-describedby="emailHelp" placeholder="Ingresar 'A' o 'R'" th:field="*{aprobado}" readonly/>
 		 			</div>
 		 			<div class="form-group col-md-4">
 		 				<label for="estado">Estado</label>
@@ -145,5 +145,33 @@
 	 			
 	 		</form>
 	 	</div>
+	 	
+	 	<script>
+	
+	const url = window.location.href;
+
+	var id = url.substring(url.lastIndexOf('/') + 1);
+	document.getElementById("id").value = id;
+	
+	  $.ajax({
+	        url: 'http://localhost:8090/evaluaciones/'+id,
+	        method: 'get',
+	        dataType: 'json',
+	        data: {
+
+	        },
+	        success: function (result) {
+
+	            $(result).each(function (i, citas) {
+	            	document.getElementById("nombres").value = citas.respuesta.nombres;
+	            	document.getElementById("apellidos").value = citas.respuesta.apellidos;
+	            	document.getElementById("materia").value = citas.respuesta.materia;
+	            	document.getElementById("nota").value = citas.respuesta.nota;
+	            	document.getElementById("aprobado").value = citas.respuesta.aprobado;
+	            	document.getElementById("estado").value = citas.respuesta.estado;
+	            });
+	        }
+	    });
+	</script>
   </body>
 </html>

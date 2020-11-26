@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import client.dominio.PatologiaDTO;
 import client.servicio.PatologiaServicio;
@@ -44,8 +45,21 @@ public class PatologiaControlador {
 		return "redirect:/patologia";
 	}
 	
-	@GetMapping("/actualizar")
-	public String redirectact(Model model) {
+	/*@RequestMapping("/actualizar/{id}")
+	public ModelAndView redirectact(Model vista,@PathVariable("id") Long id) {
+		
+		ModelAndView mav= new ModelAndView("UpdatePato");
+		
+		Map<String, Object> modelo=new HashMap<>();
+		modelo=(servicio.buscar(id));
+		
+		mav.addObject("actPatologia",modelo.get("patologiaBuscar"));
+		
+		return mav;
+	}*/
+	
+	@GetMapping("/actualizar/{id}")
+	public String redirectact(Model model,@PathVariable("id") Long id) {
 		model.addAttribute ("actPatologia", new PatologiaDTO());
 		return "UpdatePato";
 	}

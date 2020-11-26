@@ -35,6 +35,24 @@ public class PatologiaServicio {
 		return model;
 	}
 	
+	public Map<String, Object> buscar(Long id){
+		Map<String, Object>model= new HashMap<>();
+		
+		try
+		{
+			ResponseDTO patologiaBuscar=clientebd.buscar(id);
+			
+			model.put("patologiaBuscar",patologiaBuscar.getRespuesta());
+		}
+		catch(Exception e)
+		{
+			model.put("error", "error");
+			model.put("msg", "Error al extraer los datos, si su problema persiste por favor contactenos");
+			e.printStackTrace();
+		}
+		
+		return model;
+	}
 	
 	public Map<String, Object>crear(PatologiaDTO patologia){
 		Map<String, Object>model= new HashMap<>();

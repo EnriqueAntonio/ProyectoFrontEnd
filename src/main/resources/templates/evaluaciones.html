@@ -78,6 +78,35 @@
 		.active-nav-link a{ 
 		 color: black !important; 
 		}
+		  #botones
+	    {
+	    width:150px;
+	    font-size:20px;
+	    }
+	    
+	    #botones button
+	    {
+	    margin:none;
+	    }
+	    
+	    .fa-pencil-alt
+	    {
+	    color:#fff;
+	    
+	    }
+	    
+	    .fa-trash-alt{
+	    color:#fff;
+	    }
+	    
+	     .fa-pencil-alt:hover
+	    {
+	    color:#2ECC71;
+	    
+	    }
+	    .fa-trash-alt:hover{
+	    color:#E74C3C;
+	    }
 		</style>
 		
   </head>
@@ -102,14 +131,14 @@
 	
 				<div class="right-side">
 					<div class="nav-link-wrapper active-nav-link">
-						<a href="Index1.html"><i class="fas fa-home"></i>Home</a>
+						<a href="/Inicio"><i class="fas fa-home"></i>Home</a>
 					</div>
 				</div>
 	        </div>
 		<br>
 	    <form>
 	  		<div class="form-row">
-	    		<div class="form-group col-lg-4">
+	    		<div class="form-group col-lg-2">
 					<div class="clearfix">
 					<br>
 					<br>
@@ -120,15 +149,14 @@
 						</div>
 						
 						<div class="form-group">				
-							<a href="/evaluaciones/actualizar" th:href="@{'/evaluaciones/actualizar'}" class="btn btn-secondary">
-							<i class="fas fa-pencil-alt"></i> Actualizar</a> 
+							
 						</div>
 										
 					</div>
 				</div>	
 				<br><br>
 						
-				<div class="form-group col-lg-8">
+				<div class="form-group col-lg-10">
 				<div class="text-center">
 												
 													<table class="table table-striped table-hover w-auto">
@@ -142,6 +170,7 @@
 																<th>Aprobado</th>
 																<th>Estado</th>
 																<th></th>
+																
 															</tr>
 														</thead>
 														<tbody th:each="evaluaciones:${evaluaciones}">
@@ -153,11 +182,13 @@
 																<td th:text="${evaluaciones.nota}"></td>
 																<td th:text="${evaluaciones.aprobado}"></td>
 																<td th:text="${evaluaciones.estado}"></td>
-																<td>
+																<td id="botones" class="text-center">
 																<form method="post" action="/evaluaciones/delete/${evaluaciones.id}" th:action="@{'/evaluaciones/delete/' + ${evaluaciones.id}}">
 																<input type="hidden" name="userId" th:value="${evaluaciones.id}"/>
 																<input type="hidden" name="_method" th:value="borrar"/>
-																<button type="submit" name="deleteEvaluaciones" class="btn btn-info thead2"><i class="fas fa-trash-alt"></i>Borrar</button>
+																<a  th:href="@{'/evaluaciones/actualizar/'+${evaluaciones.id}}" >
+																<i class="fas fa-pencil-alt"></i></a> 
+																<button type="submit" name="deleteEvaluaciones" class="" style="border:0; background-color: Transparent; background-repeat:no-repeat;"><i class="fas fa-trash-alt"></i></button>
 																</form>
 																</td>
 															</tr>

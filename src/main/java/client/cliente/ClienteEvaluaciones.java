@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import client.dominio.EvaluacionesDTO;
 import client.util.ResponseDTO;
 
-@FeignClient(url="http://192.168.1.41:8090", name="evaluaciones")
+@FeignClient(url="http://192.168.1.33:8090", name="evaluaciones")
 public interface ClienteEvaluaciones {
 
 	@GetMapping(path="/evaluaciones", produces="application/json")

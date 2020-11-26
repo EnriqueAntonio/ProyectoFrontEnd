@@ -17,6 +17,9 @@ public interface ClientePatologia {
 	@GetMapping(path="/patologia", produces="application/json")
 	ResponseDTO listar();
 	
+	@GetMapping(path="/patologia/{id}", produces="application/json")
+	ResponseDTO buscar(@RequestParam Long id);
+	
 	@PostMapping(path="/patologia",produces="application/json")
 	ResponseDTO crear(@RequestBody PatologiaDTO patologia);
 	
